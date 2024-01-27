@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, "../build")));
 const PORT = process.env.PORT || 3001;
 
-const routes = ["/", "/posts"];
+const routes = ["/", "/users"];
 app.get("/", (req, res) => {
   const context = {};
 

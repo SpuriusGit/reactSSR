@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Posts from "./pages/Posts";
+import Users from "./pages/Users";
+import UserPosts from "./pages/UserPosts";
+import NotFound from "./pages/NotFound";
+import HeaderComponent from "./components/HeaderComponent";
+
+import "./App.css";
 
 const AppServer = () => {
   return (
-    <>
-      <Home />
-      <Posts />
-    </>
+    <div>
+      <HeaderComponent />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/users" element={<Users />}></Route>
+        <Route path="/users/:id/posts" element={<UserPosts />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
+    </div>
   );
 };
 
