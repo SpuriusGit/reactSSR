@@ -24,7 +24,7 @@ const UserAlbumPhotos = () => {
 
   return (
     <Container className="mt-4">
-      <h1>Album Photos</h1>
+      <h1 className="text-center">Album Photos</h1>
       <Row>
         {photos.map((photo) => (
           <Col key={photo.id} md={4} className="mb-4">

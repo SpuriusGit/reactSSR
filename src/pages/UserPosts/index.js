@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Card, ListGroup } from "react-bootstrap";
 
 const UserPosts = () => {
@@ -11,14 +11,12 @@ const UserPosts = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Отримання інформації про користувача
         const userResponse = await fetch(
           `https://jsonplaceholder.typicode.com/users/${id}`
         );
         const userData = await userResponse.json();
         setUser(userData);
 
-        // Отримання постів користувача
         const postsResponse = await fetch(
           `https://jsonplaceholder.typicode.com/users/${id}/posts`
         );
@@ -38,7 +36,7 @@ const UserPosts = () => {
 
   return (
     <Container className="mt-4">
-      <h1>{user.name}'s Posts</h1>
+      <h1 className="text-center">{user.name}'s Posts</h1>
       <ListGroup>
         {posts.map((post) => (
           <Card key={post.id} className="mb-3">
@@ -49,9 +47,6 @@ const UserPosts = () => {
           </Card>
         ))}
       </ListGroup>
-      <Link to="/users" className="btn btn-primary mt-3">
-        Back to Users
-      </Link>
     </Container>
   );
 };

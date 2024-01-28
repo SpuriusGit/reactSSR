@@ -23,25 +23,18 @@ const UserAlbums = () => {
   }, [id]);
 
   return (
-    <Container className="mt-4">
+    <Container className="text-center mt-4">
       <h1>User Albums</h1>
-      <ListGroup>
+      <ListGroup style={{ maxWidth: "340px" }} className="mx-auto">
         {albums.map((album) => (
-          <ListGroup.Item
-            key={album.id}
-            className="d-flex justify-content-between"
-          >
-            <div>
-              <h4>{album.title}</h4>
-            </div>
-            <div>
-              <Link
-                to={`/users/${id}/albums/${album.id}/photos`}
-                className="btn btn-primary btn-sm"
-              >
-                View Photos
-              </Link>
-            </div>
+          <ListGroup.Item key={album.id}>
+            <h4>{album.title}</h4>
+            <Link
+              to={`/users/${id}/albums/${album.id}/photos`}
+              className="btn btn-primary btn-sm mt-2"
+            >
+              View Photos
+            </Link>
           </ListGroup.Item>
         ))}
       </ListGroup>
