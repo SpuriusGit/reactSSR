@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { Container, ListGroup } from "react-bootstrap";
 
 const UserAlbums = () => {
   const { id } = useParams();
@@ -22,18 +23,29 @@ const UserAlbums = () => {
   }, [id]);
 
   return (
-    <div>
+    <Container className="mt-4">
       <h1>User Albums</h1>
-      <ul>
+      <ListGroup>
         {albums.map((album) => (
-          <li key={album.id}>
-            <h4>{album.title}</h4>
-            {/* Додайте посилання на сторінку з фотографіями альбому */}
-            <a href={`/users/${id}/albums/${album.id}/photos`}>View Photos</a>
-          </li>
+          <ListGroup.Item
+            key={album.id}
+            className="d-flex justify-content-between"
+          >
+            <div>
+              <h4>{album.title}</h4>
+            </div>
+            <div>
+              <Link
+                to={`/users/${id}/albums/${album.id}/photos`}
+                className="btn btn-primary btn-sm"
+              >
+                View Photos
+              </Link>
+            </div>
+          </ListGroup.Item>
         ))}
-      </ul>
-    </div>
+      </ListGroup>
+    </Container>
   );
 };
 

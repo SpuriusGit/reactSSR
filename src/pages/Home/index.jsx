@@ -1,6 +1,9 @@
+import React from "react";
+import { Container } from "react-bootstrap";
+
 const Home = () => {
   return (
-    <div>
+    <Container className="mt-4">
       <h1>Hi! It's my React SSR project</h1>
       <br />
       <p>
@@ -32,7 +35,7 @@ const Home = () => {
         quam in nisi ullamcorper, sit amet pharetra quam aliquam. Nullam tellus
         nisi, facilisis sit amet efficitur a, sagittis ac sapien.
       </p>
-    </div>
+    </Container>
   );
 };
 

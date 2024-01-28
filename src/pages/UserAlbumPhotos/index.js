@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Container, Row, Col, Card, Image } from "react-bootstrap";
 
 const UserAlbumPhotos = () => {
-  const { userId, albumId } = useParams();
+  const { albumId } = useParams();
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
@@ -22,17 +23,21 @@ const UserAlbumPhotos = () => {
   }, [albumId]);
 
   return (
-    <div>
+    <Container className="mt-4">
       <h1>Album Photos</h1>
-      <ul>
+      <Row>
         {photos.map((photo) => (
-          <li key={photo.id}>
-            <img src={photo.thumbnailUrl} alt={photo.title} />
-            <p>{photo.title}</p>
-          </li>
+          <Col key={photo.id} md={4} className="mb-4">
+            <Card>
+              <Image src={photo.thumbnailUrl} alt={photo.title} fluid />
+              <Card.Body>
+                <Card.Text>{photo.title}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </ul>
-    </div>
+      </Row>
+    </Container>
   );
 };
 

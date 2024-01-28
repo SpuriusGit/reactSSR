@@ -1,6 +1,6 @@
-// UserPosts.js
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Container, Card, ListGroup } from "react-bootstrap";
 
 const UserPosts = () => {
   const { id } = useParams();
@@ -37,18 +37,22 @@ const UserPosts = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <Container className="mt-4">
       <h1>{user.name}'s Posts</h1>
-      <ul>
+      <ListGroup>
         {posts.map((post) => (
-          <li key={post.id}>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-          </li>
+          <Card key={post.id} className="mb-3">
+            <Card.Body>
+              <Card.Title>{post.title}</Card.Title>
+              <Card.Text>{post.body}</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </ul>
-      <Link to="/users">Back to Users</Link>
-    </div>
+      </ListGroup>
+      <Link to="/users" className="btn btn-primary mt-3">
+        Back to Users
+      </Link>
+    </Container>
   );
 };
 
