@@ -10,8 +10,6 @@ import HeaderComponent from "./components/HeaderComponent";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./App.css";
-
 const AppServer = () => {
   return (
     <div>
