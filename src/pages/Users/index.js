@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import UserComponent from "../../components/UserComponent";
+import HeadComponent from "../../components/HeadComponent";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -41,17 +42,26 @@ const Users = () => {
   };
 
   return (
-    <div className="text-center mt-4">
-      <h1>Users</h1>
-      <Button variant="primary" size="sm" className="mb-3" onClick={handleSort}>
-        Sort by Name {sortOrder === "asc" ? "▲" : "▼"}
-      </Button>
-      <ListGroup className="d-flex flex-column align-items-center">
-        {users.map((user) => (
-          <UserComponent key={user.id} user={user} />
-        ))}
-      </ListGroup>
-    </div>
+    <React.Fragment>
+      <HeadComponent title="Users" description="Users" />
+
+      <div className="text-center mt-4">
+        <h1>Users</h1>
+        <Button
+          variant="primary"
+          size="sm"
+          className="mb-3"
+          onClick={handleSort}
+        >
+          Sort by Name {sortOrder === "asc" ? "▲" : "▼"}
+        </Button>
+        <ListGroup className="d-flex flex-column align-items-center">
+          {users.map((user) => (
+            <UserComponent key={user.id} user={user} />
+          ))}
+        </ListGroup>
+      </div>
+    </React.Fragment>
   );
 };
 

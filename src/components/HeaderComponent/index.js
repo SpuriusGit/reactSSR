@@ -16,7 +16,7 @@ const HeaderComponent = () => {
             className="mr-2"
             style={{ color: "white", textDecoration: "none" }}
           >
-            React SSR project
+            React project
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

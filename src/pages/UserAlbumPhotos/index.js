@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import HeadComponent from "../../components/HeadComponent";
 
 const UserAlbumPhotos = () => {
   const { albumId } = useParams();
@@ -23,21 +24,24 @@ const UserAlbumPhotos = () => {
   }, [albumId]);
 
   return (
-    <Container className="mt-4">
-      <h1 className="text-center">Album Photos</h1>
-      <Row>
-        {photos.map((photo) => (
-          <Col key={photo.id} md={4} className="mb-4">
-            <Card>
-              <Image src={photo.thumbnailUrl} alt={photo.title} fluid />
-              <Card.Body>
-                <Card.Text>{photo.title}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <React.Fragment>
+      <HeadComponent title="Album Photos" description="Album Photos" />
+      <Container className="mt-4">
+        <h1 className="text-center">Album Photos</h1>
+        <Row>
+          {photos.map((photo) => (
+            <Col key={photo.id} md={4} className="mb-4">
+              <Card>
+                <Image src={photo.thumbnailUrl} alt={photo.title} fluid />
+                <Card.Body>
+                  <Card.Text>{photo.title}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </React.Fragment>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Card, ListGroup } from "react-bootstrap";
+import HeadComponent from "../../components/HeadComponent";
 
 const UserPosts = () => {
   const { id } = useParams();
@@ -35,19 +36,25 @@ const UserPosts = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <Container className="mt-4">
-      <h1 className="text-center">{user.name}'s Posts</h1>
-      <ListGroup>
-        {posts.map((post) => (
-          <Card key={post.id} className="mb-3">
-            <Card.Body>
-              <Card.Title>{post.title}</Card.Title>
-              <Card.Text>{post.body}</Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
-      </ListGroup>
-    </Container>
+    <React.Fragment>
+      <HeadComponent
+        title={`${user.name}'s Posts`}
+        description={`${user.name}'s Posts`}
+      />
+      <Container className="mt-4">
+        <h1 className="text-center">{user.name}'s Posts</h1>
+        <ListGroup>
+          {posts.map((post) => (
+            <Card key={post.id} className="mb-3">
+              <Card.Body>
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Text>{post.body}</Card.Text>
+              </Card.Body>
+            </Card>
+          ))}
+        </ListGroup>
+      </Container>
+    </React.Fragment>
   );
 };
 
