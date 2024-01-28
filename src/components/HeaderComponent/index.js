@@ -9,7 +9,16 @@ const HeaderComponent = () => {
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="/">React SSR project</Navbar.Brand>
+        <Navbar.Brand href="/">
+          {" "}
+          <Link
+            to={`/`}
+            className="mr-2"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            React SSR project
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
